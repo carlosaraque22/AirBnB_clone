@@ -24,9 +24,10 @@ class BaseModel:
 
 
     def __str__(self):
-
         """str repr of class"""
-        return "[BaseModel] ({}) <{}>" .format(self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.name__,
+                                     self.id,
+                                     self.__dict__)
 
 
     
