@@ -11,7 +11,7 @@ class BaseModel:
 
     def __init__(self, **argdict):
 
-        """generate unique id converted to str"""
+        """generate unique id converted to str and format datatime"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -22,12 +22,11 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
 
-    def to_dict(self, ):
-
-        """create a dictionary"""
-        
 
     def __str__(self):
 
         """str repr of class"""
         return "[BaseModel] ({}) <{}>" .format(self.id, self.__dict__)
+
+
+    
