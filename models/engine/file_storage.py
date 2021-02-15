@@ -15,7 +15,7 @@ class FileStorage:
     """ <class name>.id ex: BaseModel.12121212"""
 
 
-    __file_path = "file.json"
+    __file_path = "object_contents.json"
     __objects = {}
 
     def all(self):
@@ -30,19 +30,16 @@ class FileStorage:
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         for key, value in self.__objects.items():
-            if not isinstance(value, dict):
-                self.objects[key] = value.to_dict()
+                self.__objects[key] = value.to_dict()
         with open(self.__file_path, "w") as file:
-            json.dumps(self.__objects, file)
+            file.write(json.dumps(self.__objects))
 
     def reload(self):
         """deserializes the JSON file to __objects, only if the JSON file"""
         """__file_path exists ; otherwise, do nothing. If the file doesnt"""
         """exist, no exception should be raised"""
-        try:
+        if path.exists(self.__file_path):
             with open(self.__file_path, "r") as file:
-                serializable_file = json.load(file)
-            for key, value in serializable_file.items():
+                __objects = json.load(file)
+            for key, value in __objects.items():
                 self.__objects[key] = eval(value['__class__'])(**value)
-        except FileNotFoundError:
-            pass
