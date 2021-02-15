@@ -29,6 +29,9 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
+        for key, value in self.__objects.items():
+            if not isinstance(value, dict):
+                self.objects[key] = value.to_dict()
         with open(self.__file_path, "w") as file:
             json.dumps(self.__objects, file)
 
@@ -36,6 +39,10 @@ class FileStorage:
         """deserializes the JSON file to __objects, only if the JSON file"""
         """__file_path exists ; otherwise, do nothing. If the file doesnt"""
         """exist, no exception should be raised"""
-        if path.exists(self.__file_path):
-            with open(self.__file_path, mode="r", encoding="utf-8") as f:
-                __objects = (json.load(f))
+        try:
+            with open(self.__file_path, "r") as file:
+                serializable_file = json.load(file)
+            for key, value in serializable_file.items():
+                self.__objects[key] = eval(value['__class__'])(**value)
+        except FileNotFoundError:
+            pass
