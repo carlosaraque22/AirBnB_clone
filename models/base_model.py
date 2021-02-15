@@ -37,7 +37,7 @@ class BaseModel:
     def save(self):
         """save class data into a file to use it later"""
         self.updated_at = datetime.now()
-        models.file_storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """returns a distionary containing all keys/values of __dict__"""

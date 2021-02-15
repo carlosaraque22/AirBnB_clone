@@ -15,7 +15,7 @@ class FileStorage:
     """ <class name>.id ex: BaseModel.12121212"""
 
 
-    __file_path = "objects_contents.json"
+    __file_path = "objects_contents_storage"
     __objects = {}
 
     def all(self):
@@ -29,4 +29,13 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
+        with open(self.__file_path, mode="w", encoding="utf-8") as jason_file:
+            jason_file.write(json.dumps(__objects))
 
+    def reload(self):
+        """deserializes the JSON file to __objects, only if the JSON file"""
+        """__file_path exists ; otherwise, do nothing. If the file doesnt"""
+        """exist, no exception should be raised"""
+        if path.exists(self.__file_path):
+            with open(self.__file_path, mode="r", encoding="utf-8") as f:
+                __objects = (json.load(f))
