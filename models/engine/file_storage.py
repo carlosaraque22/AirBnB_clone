@@ -15,7 +15,7 @@ class FileStorage:
     """ <class name>.id ex: BaseModel.12121212"""
 
 
-    __file_path = "objects_contents_storage"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -29,8 +29,8 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
-        with open(self.__file_path, mode="w", encoding="utf-8") as jason_file:
-            jason_file.write(json.dumps(__objects))
+        with open(self.__file_path, "w") as file:
+            json.dumps(self.__objects, file)
 
     def reload(self):
         """deserializes the JSON file to __objects, only if the JSON file"""
