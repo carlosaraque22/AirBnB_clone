@@ -88,10 +88,41 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
     def do_all(self, arg):
          """Prints all string representation of all instances
          based or not on the class name"""
          command = arg.split()
          models.storage.reload()
+         if (len(command) == 0) or (command[0] in found_classes):
+             print(models.storage.all())
+         else:
+             print("** class doesn't exist **")
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id by adding or"""
+        """updating attribute (save the change into the JSON file)"""
+        command = arg.split()
+        models.storage.reload()
+        if len(command) == 0:
+             print("** class name missing **")
+             return False
+        if command[0] in found_classes:
+            if (len(command) == 1):
+                print("** instance id missing **")
+            elif (len(command) == 2):
+                print("** attribute name missing **")
+            elif (len(command) == 3):
+                print("** value missing **")
+            elif (len(command) > 3):
+                new_object = command[0] + '.' + command[1]
+                if new_object in models.storage.all():
+                    models.storage.all().update({"command[2]": "command[3]"})
+                    models.storage.save()
+                else:
+                    print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
