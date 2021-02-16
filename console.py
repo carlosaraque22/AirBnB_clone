@@ -88,5 +88,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+    def do_all(self, arg):
+         """Prints all string representation of all instances
+         based or not on the class name"""
+         command = arg.split()
+         models.storage.reload()
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
