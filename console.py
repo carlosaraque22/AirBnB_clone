@@ -6,8 +6,9 @@ import cmd
 import models
 import shlex
 from models.base_model import BaseModel
+from models.user import User
 
-found_classes = {"BaseModel": BaseModel}
+found_classes = {"BaseModel": BaseModel, "User": User}
 
 class HBNBCommand(cmd.Cmd):
 
