@@ -4,6 +4,7 @@
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
 
     """Public class attributes: """
@@ -11,7 +12,6 @@ class User(BaseModel):
     """password: string - empty string"""
     """first_name: string - empty string"""
     """last_name: string - empty string"""
-
 
     email = ""
     password = ""

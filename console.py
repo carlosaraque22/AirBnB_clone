@@ -4,11 +4,18 @@
 
 import cmd
 import models
-import shlex
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
-found_classes = {"BaseModel": BaseModel, "User": User}
+found_classes = {"BaseModel": BaseModel, "User": User, "State": State,
+                 "City": City, "Amenity": Amenity, "Place": Place,
+                 "Review": Review}
+
 
 class HBNBCommand(cmd.Cmd):
 
@@ -92,24 +99,24 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-         """Prints all string representation of all instances
-         based or not on the class name"""
-         command = arg.split()
-         models.storage.reload()
-         if (len(command) == 0) or (command[0] in found_classes):
-             print(models.storage.all())
-         else:
-             print("** class doesn't exist **")
+        """Prints all string representation of all instances
+        based or not on the class name"""
+        command = arg.split()
+        models.storage.reload()
+        if (len(command) == 0) or (command[0] in found_classes):
+            print(models.storage.all())
+        else:
+            print("** class doesn't exist **")
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or"""
         """updating attribute (save the change into the JSON file)"""
         models.storage.reload()
         if len(arg) == 0:
-             print("** class name missing **")
-             return False
+            print("** class name missing **")
+            return False
         else:
-            command = shlex.split(arg)
+            command = arg.split()
             if command[0] not in found_classes:
                 print("** class doesn't exist **")
                 return False

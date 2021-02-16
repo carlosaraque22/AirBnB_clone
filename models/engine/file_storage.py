@@ -6,6 +6,12 @@ import json
 from models.base_model import BaseModel
 from os import path
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 
 class FileStorage:
 
@@ -14,7 +20,6 @@ class FileStorage:
     """__file_path: string - path to the JSON file (ex: file.json)"""
     """__objects: dictionary - empty but will store all objects by"""
     """ <class name>.id ex: BaseModel.12121212"""
-
 
     __file_path = "object_contents.json"
     __objects = {}
@@ -31,17 +36,20 @@ class FileStorage:
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         new_objects = {}
-        for key, value in self.__objects.items():
-            self.__objects[key] = value.to_dict()
+        for key in self.__objects:
+            new_objects[key] = self.__objects[key].to_dict()
         with open(self.__file_path, "w") as file:
-            file.write(json.dumps(self.__objects))
+            file.write(json.dumps(new_objects))
 
     def reload(self):
         """deserializes the JSON file to __objects, only if the JSON file"""
         """__file_path exists ; otherwise, do nothing. If the file doesnt"""
         """exist, no exception should be raised"""
         if path.exists(self.__file_path):
-            with open(self.__file_path, "r") as file:
-                __objects = json.load(file)
-            for key, value in __objects.items():
-                self.__objects[key] = eval(value['__class__'])(**value)
+            try:
+                with open(self.__file_path, "r") as file:
+                    __objects = json.load(file)
+                for key, value in __objects.items():
+                    self.__objects[key] = eval(value['__class__'])(**value)
+            except:
+                pass

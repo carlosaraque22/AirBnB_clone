@@ -7,14 +7,14 @@ from models.base_model import BaseModel
 from datetime import datetime
 import uuid
 
+
 class TestBaseModel(unittest.TestCase):
     """ test the base model class"""
 
     def test_base_model_id_format(self):
-       """test if UUID is a string"""
-       id_nbr = BaseModel()
+        """test if UUID is a string"""
+        id_nbr = BaseModel()
         self.assertIsInstance(id_nbr.id, str)
-
 
     def test_base_model_created_at_format(self):
         """test if created_at is datetime format"""
