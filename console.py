@@ -4,6 +4,7 @@
 
 import cmd
 import models
+import shlex
 from models.base_model import BaseModel
 
 found_classes = {"BaseModel": BaseModel}
@@ -102,27 +103,36 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or"""
         """updating attribute (save the change into the JSON file)"""
-        command = arg.split()
         models.storage.reload()
-        if len(command) == 0:
+        if len(arg) == 0:
              print("** class name missing **")
              return False
-        if command[0] in found_classes:
-            if (len(command) == 1):
-                print("** instance id missing **")
-            elif (len(command) == 2):
-                print("** attribute name missing **")
-            elif (len(command) == 3):
-                print("** value missing **")
-            elif (len(command) > 3):
-                new_object = command[0] + '.' + command[1]
-                if new_object in models.storage.all():
-                    models.storage.all().update({"command[2]": "command[3]"})
-                    models.storage.save()
-                else:
-                    print("** no instance found **")
         else:
-            print("** class doesn't exist **")
+            command = shlex.split(arg)
+            if command[0] not in found_classes:
+                print("** class doesn't exist **")
+                return False
+            if command[0] in found_classes and len(command) == 1:
+                print("** instance id missing **")
+                return False
+            new_object = command[0] + '.' + command[1]
+            if new_object in models.storage.all():
+                updated_dic = models.storage.all()[new_object].__dict__
+                if len(command) == 2:
+                    print("** attribute name missing **")
+                elif len(command) == 3:
+                    print("** value missing **")
+                else:
+                    key = command[2]
+                    try:
+                        attr = type(updated_dic[key])
+                        value = attr(command[3])
+                    except KeyError:
+                        value = command[3]
+                    updated_dic[key] = value
+                    models.storage.save()
+            else:
+                print("** no instance found **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
