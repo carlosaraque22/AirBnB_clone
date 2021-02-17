@@ -3,7 +3,7 @@
 """ Module to test class File Storage"""
 
 import json
-# import unittest
+import unittest
 from models.base_model import BaseModel
 from os import path
 from models.user import User
@@ -19,8 +19,8 @@ class TestFileStorage(unittest.TestCase):
 
     """test File Storage"""
 
-   # def test_all_methods(self):
-   #     """test all methods"""
-   #     Dict_storage = FileStorage()
-   #     new_dict_storage = Dict_storage.all()
-   #     self.assertEqual(type(new_dict_storage), dict)
+    def test_all_methods(self):
+        """test all methods"""
+        Dict_storage = FileStorage()
+        new_dict_storage = Dict_storage.all()
+        self.assertEqual(type(new_dict_storage), dict)
