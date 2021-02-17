@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+"""Test Console"""
 
 from models.base_model import BaseModel
 from models.user import User
@@ -9,8 +10,6 @@ from models.state import State
 from models.review import Review
 from models.place import Place
 import unittest
-
-"""Test Console"""
 
 
 class TestConsole(unittest.TestCase):
@@ -33,20 +32,3 @@ class TestConsole(unittest.TestCase):
         self.assertEqual(state_example.__class__.__name__, "State")
         self.assertEqual(review_example.__class__.__name__, "Review")
         self.assertEqual(place_example.__class__.__name__, "Place")
-
-    def test_father(self):
-
-        """ test if all required classes inherit correcly from BaseModel"""
-
-        user_example = User()
-        city_example = City()
-        amenity_example = Amenity()
-        state_example = State()
-        review_example = Review()
-        place_example = Place()
-        self.assertTrue(issubclass(user_example.__class__, BaseModel))
-        self.assertTrue(issubclass(city_example.__class__, BaseModel))
-        self.assertTrue(issubclass(amenity_example.__class__, BaseModel))
-        self.assertTrue(issubclass(state_example.__class__, BaseModel))
-        self.assertTrue(issubclass(review_example.__class__, BaseModel))
-        self.assertTrue(issubclass(place_example.__class__, BaseModel))
