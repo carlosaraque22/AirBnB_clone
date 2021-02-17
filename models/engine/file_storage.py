@@ -48,7 +48,7 @@ class FileStorage:
         if path.exists(self.__file_path)
         try:
             with open(self.__file_path, "r") as file:
-               new_objects = json.loads(file)
+               new_objects = json.load(file)
             for key, value in new_objects.items():
                 self.__objects[key] = eval(value['__class__'])(**value)
         except:
