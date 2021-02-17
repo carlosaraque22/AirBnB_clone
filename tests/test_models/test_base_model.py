@@ -48,3 +48,13 @@ class TestBaseModel(unittest.TestCase):
         date_before_save = date.updated_at
         date.save()
         self.assertTrue(date.updated_at > date_before_save)
+
+    def test_to_dict_noAditonalAttr(self):
+        """check to_dict Attributes"""
+        my_model = BaseModel()
+        BaseModel.name = "holberton"
+        attributes = {}
+        for key, value in my_model.to_dict().items():
+            if (key not in ('__class__', 'id', 'created_at', 'updated_at')):
+                attributes[key] = value
+        self.assertFalse(attributes)
