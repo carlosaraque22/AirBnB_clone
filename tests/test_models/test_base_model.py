@@ -41,3 +41,15 @@ class TestBaseModel(unittest.TestCase):
         instance = BaseModel()
         string = "[BaseModel] ({}) {}".format(instance.id, instance.__dict__)
         self.assertEqual(string, str(instance))
+
+    def test_updated_at_after_save(self):
+        """test if updated_at has the current datetime after save"""
+        date = BaseModel()
+        date_before_save = date.updated_at
+        date.save()
+        self.assertTrue(date.updated_at > date_before_save)
+
+    def test_to_dict(self):
+        """test if dictionary has the correct attributes"""
+       dict = BaseModel()
+       dict = {"__class__": 
