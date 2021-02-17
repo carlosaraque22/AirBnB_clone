@@ -56,9 +56,9 @@ class TestBaseModel(unittest.TestCase):
         test_dic = dic.to_dict()
         self.assertIsInstance(dic, BaseModel)
         self.assertEqual(type(dic).__name__, "BaseModel")
-        self.assertTrue(type(test_dic['created_at']), 'str')
-        self.assertTrue(type(test_dic['updated_at']), 'str')
+        self.assertTrue(type(test_dic['created_at']), 'datetime')
+        self.assertTrue(type(test_dic['updated_at']), 'datetime')
         self.assertTrue(type(test_dic['id']), 'str')
-        
+
     if __name__ == '__main__':
         unittest.main()
