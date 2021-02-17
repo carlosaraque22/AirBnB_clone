@@ -49,20 +49,8 @@ class TestBaseModel(unittest.TestCase):
         date.save()
         self.assertTrue(date.updated_at > date_before_save)
 
-    def test_to_dict(self):
-        """Tests the instance before using the todict conversion"""
-        dic = BaseModel()
-        new_dict = dic.__dict__
-        self.assertEqual(type(dic).__name__, "BaseModel")
-        self.assertTrue(hasattr(dic, '__class__'))
-        self.assertEqual(str(dic.__class__),
-                         "<class 'models.base_model.BaseModel'>")
-        self.assertTrue(type(new_dict['created_at']), 'datetime.datetime')
-        self.assertTrue(type(new_dict['updated_at']), 'datetime.datetime')
-        self.assertTrue(type(new_dict['id']), 'str')
-
     def test_to_dict_after(self):
-        """Tests instances after using to_dict conversion"""
+        """Tests instances after to_dict"""
         dic = BaseModel()
         new_dict = BaseModel()
         test_dic = dic.to_dict()
@@ -72,3 +60,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(type(test_dic['updated_at']), 'str')
         self.assertTrue(type(test_dic['id']), 'str')
         self.assertNotEqual(dic.id, new_dict.id)
+
+    if __name__ == '__main__':
+        unittest.main()
