@@ -2,7 +2,7 @@
 
 """ Module to test class File Storage"""
 
-#import unittest
+import unittest
 #import json
 #from models.base_model import BaseModel
 #from os import path
@@ -16,7 +16,9 @@
 
 
 class TestFileStorage(unittest.TestCase):
+
     """test File Storage"""
+
     def test_all_methods(self):
         """test all methods"""
         #  Dict_storage = FileStorage()
