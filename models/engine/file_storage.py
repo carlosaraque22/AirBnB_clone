@@ -47,8 +47,8 @@ class FileStorage:
         """exist, no exception should be raised"""
         try:
             with open(self.__file_path, "r") as file:
-               new_objects = json.load(file)
-            for key, value in new_objects.items():
+               file_serialized = json.load(file)
+            for key, value in file_serialized.items():
                 self.__objects[key] = eval(value['__class__'])(**value)
         except:
             pass
