@@ -2,10 +2,10 @@
 
 """Unittest for base model module."""
 
-import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 import uuid
+import unittest
 
 
 class TestBaseModel(unittest.TestCase):
