@@ -1,55 +1,41 @@
 #!/usr/bin/python3
-"""File Storage unittest"""
-
-import unittest
-import pep8
-import models
-import re
+"""Defines unittests for models/engine/file_storage.py.
+Unittest classes:
+    TestFileStorage_instantiation
+    TestFileStorage_methods
+"""
 import os
-from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
+import json
+import unittest
 from datetime import datetime
-from time import sleep
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from models.user import User
 from models.state import State
+from models.place import Place
 from models.city import City
 from models.amenity import Amenity
-from models.place import Place
 from models.review import Review
 
 
-class TestFileStorage(unittest.TestCase):
-        """[unittest]"""
+class TestFileStorage_instantiation(unittest.TestCase):
+        """Unittests for testing instantiation of the FileStorage class."""
 
-        def testpep8(self):
-                """ [testing codestyle] """
-                pepstylecode = pep8.StyleGuide(quiet=True)
-                user_path = 'models/engine/file_storage.py'
-                result = pepstylecode.check_files([user_path])
+        def test_FileStorage_instantiation_no_args(self):
+            self.assertEqual(type(FileStorage()), FileStorage)
 
-        def test_createAttr_noArgs(self):
-                """[create Instance User]"""
-                my_model = User()
-                my_model.first_name = "FirstName"
-                my_model.last_name = "LastName"
-                my_model.email = "email@test.com"
-                self.storage = FileStorage()
+        def test_FileStorage_instantiation_with_arg(self):
+            with self.assertRaises(TypeError):
+                FileStorage(None)
 
-        def test_all(self):
-                """[Test all File Storage Functions]"""
-                storage = FileStorage()
-                my_model = storage.all()
-                self.assertIsNotNone(my_model)
-                self.assertEqual(type(my_model), dict)
-                self.assertIs(my_model, storage._FileStorage__objects)
+        def test_FileStorage_file_path_is_private_str(self):
+            self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
-        def test_new(self):
-                """[Test new file storage functions]"""
-                storage = FileStorage()
-                my_model = storage.all()
-                user = User()
-                user.id = 12345
-                user.name = "Name"
-                storage.new(user)
-                key = user.__class__.__name__ + "." + str(user.id)
-                self.assertIsNotNone(my_model[key])
+        def testFileStorage_objects_is_private_dict(self):
+            self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+
+        def test_storage_initializes(self):
+            self.assertEqual(type(models.storage), FileStorage)
+
+        if __name__ == "__main__":
+            unittest.main()
