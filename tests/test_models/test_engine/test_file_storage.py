@@ -14,6 +14,7 @@ from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
 
+
 class TestFileStorage(unittest.TestCase):
 
     """test File Storage"""
@@ -21,6 +22,5 @@ class TestFileStorage(unittest.TestCase):
     def test_all_methods(self):
         """test all methods"""
 
-        dict_storage = FileStorage()
-        new_dict_storage = self.storage.all()
-        self.assertEqual(type(dict_storage), new_dict_storage)
+        Dict_storage = self.storage.all()
+        self.assertEqual(type(Dict_storage), dict)
