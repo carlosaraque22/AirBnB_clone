@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """File Storage unittest"""
 
-<<<<<<< HEAD
 import unittest
 import pep8
 import models
@@ -17,19 +16,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-=======
-#import unittest
-#import json
-#from models.base_model import BaseModel
-#from os import path
-#from models.user import User
-#from models.state import State
-#from models.city import City
-#from models.amenity import Amenity
-#from models.place import Place
-#from models.review import Review
-#from models.engine.file_storage import FileStorage
->>>>>>> 53653a018f33f8c4a0b00a4dd45fa93d3f42adde
 
 
 class TestFileStorage(unittest.TestCase):
