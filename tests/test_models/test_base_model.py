@@ -49,7 +49,7 @@ class TestBaseModel(unittest.TestCase):
         date.save()
         self.assertTrue(date.updated_at > date_before_save)
 
-    def test_to_dict(self):
-        """test if dictionary has the correct attributes"""
-       dict = BaseModel()
-       dict = {"__class__": 
+        #def test_to_dict(self):
+       # """test if dictionary has the correct attributes"""
+       #""dict = BaseModel()"""
+       #dict = {"__class__":""" 
