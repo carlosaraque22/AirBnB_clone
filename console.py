@@ -156,10 +156,9 @@ class HBNBCommand(cmd.Cmd):
     # call all function
     #########
 
-
     def do_BaseModel(self, arg):
         """Function to use all methods"""
-        self.class_action("BaseModel", args)
+        self.class_action("BaseModel", arg)
 
     def do_User(self, arg):
         """Function to use all methods"""
@@ -189,12 +188,13 @@ class HBNBCommand(cmd.Cmd):
         """In case to not found the command this func is executed"""
         if arg[:6] == ".all()":
             self.do_all(class_name)
-        elif arg[:6] == ".show()":
-            self.do_show(class_name)
-        elif arg[:7] == ".count()":
+        elif arg[:6] == ".show(":
+            self.do_show(class_name + ' ' + arg[7: -2])
+        elif arg[:7] == ".count(":
             self.do_count(class_name)
-        elif arg[:9] == ".destroy()":
-            self.do_destroy(class_name)
+        elif arg[:9] == ".destroy(":
+            self.do_destroy(class_name + ' ' + arg[10: -2])
+            # elif arg[:8] == ".update(":
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
