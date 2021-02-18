@@ -4,6 +4,8 @@
 
 from models.base_model import BaseModel
 from models.user import User
+from datetime import datetime
+import uuid
 import unittest
 
 
@@ -19,3 +21,18 @@ class Testuser(unittest.TestCase):
         """Tests if Class inherits from BaseModel"""
         user_example = User()
         self.assertTrue(issubclass(user_example.__class__, BaseModel))
+
+    def test_user_id_format(self):
+        """test if UUID is a string"""
+        id_nbr = BaseModel()
+        self.assertIsInstance(id_nbr.id, str)
+
+    def test_user_created_at_format(self):
+        """test if created_at is datetime format"""
+        date = BaseModel()
+        self.assertIsInstance(date.created_at, datetime)
+
+    def test_user_updated_at_format(self):
+        """test if date and time updated are in datetime format"""
+        date = BaseModel()
+        self.assertIsInstance(date.updated_at, datetime)

@@ -4,6 +4,8 @@
 
 from models.base_model import BaseModel
 from models.city import City
+from datetime import datetime
+import uuid
 import unittest
 
 
@@ -21,3 +23,18 @@ class Testcity(unittest.TestCase):
 
         city_example = City()
         self.assertTrue(issubclass(city_example.__class__, BaseModel))
+
+    def test_city_id_format(self):
+        """test if UUID is a string"""
+        id_nbr = BaseModel()
+        self.assertIsInstance(id_nbr.id, str)
+
+    def test_city_created_at_format(self):
+        """test if created_at is datetime format"""
+        date = BaseModel()
+        self.assertIsInstance(date.created_at, datetime)
+
+    def test_city_updated_at_format(self):
+        """test if date and time updated are in datetime format"""
+        date = BaseModel()
+        self.assertIsInstance(date.updated_at, datetime)
