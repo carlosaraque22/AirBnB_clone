@@ -2,7 +2,6 @@
 
 """Test class Amenity"""
 
-import models
 from models.base_model import BaseModel
 from models.amenity import Amenity
 import unittest
@@ -10,14 +9,6 @@ import unittest
 
 class Testamenity(unittest.TestCase):
     """test for amenity class"""
-
-    def test_docstring(self):
-        """ function test_docstring """
-        msj = "Module doesnt have docstring"
-        obj = models.amenity.__doc__
-        self.assertIsNotNone(obj, msj)
-        msj = "Class doesnt have docstring"
-        self.assertIsNotNone(obj, msj)
 
     def test_class_name(self):
         """ tests if the class is named correctly"""

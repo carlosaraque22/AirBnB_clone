@@ -3,21 +3,12 @@
 """Test class Review"""
 
 from models.base_model import BaseModel
-import models
 from models.review import Review
 import unittest
 
 
 class Testreview(unittest.TestCase):
     """tests for the Review class"""
-
-    def test_docstring(self):
-        """ function test_docstring """
-        msj = "Module doesnt have docstring"
-        obj = models.review.__doc__
-        self.assertIsNotNone(obj, msj)
-        msj = "Class doesnt have docstring"
-        self.assertIsNotNone(obj, msj)
 
     def test_class_name(self):
         """Tests if class is named correctly"""

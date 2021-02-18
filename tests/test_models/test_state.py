@@ -3,21 +3,12 @@
 """Test class State"""
 
 from models.base_model import BaseModel
-import models
 from models.state import State
 import unittest
 
 
 class Teststate(unittest.TestCase):
     """tests for the Place class"""
-
-    def test_docstring(self):
-        """ function test_docstring """
-        msj = "Module doesnt have docstring"
-        obj = models.state.__doc__
-        self.assertIsNotNone(obj, msj)
-        msj = "Class doesnt have docstring"
-        self.assertIsNotNone(obj, msj)
 
     def test_class_name(self):
         """Tests if class is named correctly"""
