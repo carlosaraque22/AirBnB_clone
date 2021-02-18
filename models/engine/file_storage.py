@@ -36,8 +36,8 @@ class FileStorage:
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         new_objects = {}
-        for key in self.__objects:
-            new_objects[key] = self.__objects[key].to_dict()
+        for key, value in self.__objects.items():
+            new_objects[key] = value.to_dict()
         with open(self.__file_path, "w") as file:
             file.write(json.dumps(new_objects))
 
@@ -48,8 +48,8 @@ class FileStorage:
         if path.exists(self.__file_path):
             try:
                 with open(self.__file_path, "r") as file:
-                    __objects = json.load(file)
-                for key, value in __objects.items():
+                    new_objects = json.load(file)
+                for key, value in new_objects.items():
                     self.__objects[key] = eval(value['__class__'])(**value)
             except:
                 pass
