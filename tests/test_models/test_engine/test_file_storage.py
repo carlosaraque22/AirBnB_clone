@@ -20,6 +20,14 @@ import unittest
 class TestFile_Storage(unittest.TestCase):
     """ class TestFile_Storage """
 
+    def test_docstring(self):
+        """ function test_docstring """
+        msj = "Module doesnt have docstring"
+        obj = models.engine.file_storage.__doc__
+        self.assertIsNotNone(obj, msj)
+        msj = "Classes doesnt have docstring"
+        self.assertIsNotNone(obj, msj)
+
     def test_is_an_instance(self):
         """ function test_is_an_instance """
         my_model = FileStorage()
