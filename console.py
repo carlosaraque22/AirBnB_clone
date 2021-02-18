@@ -194,7 +194,18 @@ class HBNBCommand(cmd.Cmd):
             self.do_count(class_name)
         elif arg[:9] == ".destroy(":
             self.do_destroy(class_name + ' ' + arg[10: -2])
-            # elif arg[:8] == ".update(":
+        elif arg[:8] == ".update(":
+            if "{" in arg and "}" in arg:
+                new_arg = arg[8:-1].split("{")
+                new_arg[1] = "{" + new_arg[1]
+            else:
+                new_arg = arg[8:-1].split(",")
+            if len(new_arg) == 3:
+                new_arg = " ".join(new_arg)
+                new_arg = new_arg.replace("\"", "")
+                new_arg = new_arg.replace(" ", " ")
+                self.do_update(class_name + " " + new_arg)
+            # elif len(new_arg) == 2:
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
