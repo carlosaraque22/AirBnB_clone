@@ -20,6 +20,11 @@ import unittest
 class TestFile_Storage(unittest.TestCase):
     """ class TestFile_Storage """
 
+    def test_is_an_instance(self):
+        """ function test_is_an_instance """
+        my_model = FileStorage()
+        self.assertIsInstance(my_model, FileStorage)
+
     def test_all(self):
         """tests if all method that returns dict __objects works properly"""
         storage = FileStorage()
