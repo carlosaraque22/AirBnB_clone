@@ -205,7 +205,19 @@ class HBNBCommand(cmd.Cmd):
                 new_arg = new_arg.replace("\"", "")
                 new_arg = new_arg.replace(" ", " ")
                 self.do_update(class_name + " " + new_arg)
-            # elif len(new_arg) == 2:
+            elif len(new_arg) == 2:
+                try:
+                    dict = eval(new_arg[1])
+                except:
+                    return False
+                for dic in dict.keys():
+                    self.do_update(class_name + " " +
+                                   new_arg[0][1:-3] + " " +
+                                   str(dic) + " " + str(dict[dic]))
+            else:
+                return False
+        else:
+            print("Command not found")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
