@@ -2,17 +2,22 @@
 
 """Test class City"""
 
-from models.amenity import Amenity
+import models
 from models.base_model import BaseModel
 from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 import unittest
 
 
 class Testcity(unittest.TestCase):
     """tests for the City class"""
+
+    def test_docstring(self):
+        """ function test_docstring """
+        msj = "Module doesnt have docstring"
+        obj = models.city.__doc__
+        self.assertIsNotNone(obj, msj)
+        msj = "Classes doesnt have docstring"
+        self.assertIsNotNone(obj, msj)
 
     def test_class_name(self):
         """Tests if class is named correctly"""
