@@ -47,15 +47,14 @@ class FileStorage:
         """exist, no exception should be raised"""
 
         found_classes = {'BaseModel': BaseModel, 'User': User,
-                   'State': State, 'City': City, 'Amenity': Amenity,
-                   'Place': Place, 'Review': Review}
-
+                         'State': State, 'City': City, 'Amenity': Amenity,
+                         'Place': Place, 'Review': Review}
         if path.exists(self.__file_path):
             try:
-                with open('{}'.format(self.__file_path, "r") as file:
+                with open('{}'.format(self.__file_path), "r") as file:
                     new_objects = json.load(file)
-                for key in new_objects:
-                    self.__objects[key] = found_classes[new_object[key][
-                        '__class__']])(**new_object[key])
+                    for key in new_objects:
+                        self.__objects[key] = found_classes
+                        [new_object[key]['__class__']](**new_object[key])
             except:
                 pass
