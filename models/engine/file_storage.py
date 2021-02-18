@@ -45,10 +45,11 @@ class FileStorage:
         """deserializes the JSON file to __objects, only if the JSON file"""
         """__file_path exists ; otherwise, do nothing. If the file doesnt"""
         """exist, no exception should be raised"""
-        try:
-            with open(self.__file_path, "r", encoding="utf-8") as file:
-                for key, value in (json.load(file)).items():
-                    value = eval(value["__class__"])(**value)
-                    self.__objects[key] = value
-        except Exception:
-            pass
+        if path.exists(self.__file_path):
+            try:
+                with open(self.__file_path, "r") as file:
+                    __objects = json.load(file)
+                for key, value in __objects.items():
+                    self.__objects[key] = eval(value['__class__'])(**value)
+            except:
+                pass
