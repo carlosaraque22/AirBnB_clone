@@ -102,7 +102,7 @@ EOF  help  quit
 $
 
 # Examples
-'''
+```
 (hbnb)create BaseModel
 49faff9a-6318-451f-87b6-910505c55907
 (hbnb)show BaseModel 49faff9a-6318-451f-87b6-910505c55907
@@ -115,6 +115,7 @@ $
 (hbnb)show BaseModel 49faff9a-6318-451f-87b6-910505c55907
 ** no instance found **
 (hbnb) quit
-'''
+```
+
 # Authors
 Carlos Araque - Luciana Sarachu
