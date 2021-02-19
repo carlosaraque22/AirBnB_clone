@@ -102,17 +102,24 @@ EOF  help  quit
 $
 
 # Examples
-
+$
 (hbnb) create BaseModel(or User, Review, State, Amenity, City, Place)
 2dd6ef5c-467c-4f82-9521-a772ea7d84e9
+$
+$
 (hbnb)
 (hbnb) all BaseModel(or User, Review, State, Amenity, City, Place)
 ["[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}"]
+$
+$
 (hbnb)
 (hbnb) show BaseModel(or User, Review, State, Amenity, City, Place) 49faff9a-6318-451f-87b6-910505c55907
 [BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}
+$
+$
 (hbnb)
 (hbnb) update BaseModel(or User, Review, State, Amenity, City, Place) 49faff9a-6318-451f-87b6-910505c55907 first_name "Betty"
+$
 (hbnb)
 (hbnb) show BaseModel(or User, Review, State, Amenity, City, Place) 49faff9a-6318-451f-87b6-910505c55907
 [BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}
