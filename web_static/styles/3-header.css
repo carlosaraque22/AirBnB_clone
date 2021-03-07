@@ -1,21 +1,11 @@
 header {
-    background-color: white;
+    background: white;
     height: 70px;
     width: 100%;
-    /* border grey */
     border-bottom: 1px solid #CCCCCC;
 }
-
-<<<<<<< HEAD
-logo_h {
-
-    height:100%;
-=======
-#logo_h {
+header .logo {
+    background: url("../images/logo.png") no-repeat;
+    left: 20px;
     height: 100%;
->>>>>>> 91c88ee6b457f05f058ede4d96a912028a5c9bfb
-    width: 150px;
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
